@@ -6,7 +6,7 @@
 /*   By: thelmy <thelmy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 03:41:23 by thelmy            #+#    #+#             */
-/*   Updated: 2024/12/19 16:13:08 by thelmy           ###   ########.fr       */
+/*   Updated: 2025/01/14 18:38:26 by thelmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,14 +39,15 @@ void	free_textures(t_game game)
 static void	assigning_texture(char *line, char **texture, int fd, t_game game)
 {
 	int	i;
+	char *ptr;
 
 	i = 2;
 	while (line[i] == ' ')
 		i++;
 	if (*texture == NULL)
 	{
-		line += i;
-		*texture = ft_strdup(line);
+		ptr = line + i;
+		*texture = ft_strdup(ptr);
 		if (*texture == NULL)
 		{
 			free(line);
@@ -57,9 +58,7 @@ static void	assigning_texture(char *line, char **texture, int fd, t_game game)
 	{
 		free(line);
 		free_textures(game);
-		close(fd);
-		printf("Error\n texture direction is doubled\n");
-		exit(1);
+		(close(fd), printf("Error\n texture direction is doubled\n"), exit(1));
 	}
 }
 

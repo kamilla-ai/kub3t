@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   string_functions_two.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krazikho <krazikho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thelmy <thelmy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/30 00:38:17 by thelmy            #+#    #+#             */
-/*   Updated: 2025/01/14 17:58:44 by krazikho         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:40:23 by thelmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 int	ft_atoi(char *str)
 {
-	int				i;
-	int				sign;
-	unsigned long	result;
+	int					i;
+	int					sign;
+	unsigned long long	result;
 
 	i = 0;
 	sign = 1;
@@ -30,14 +30,15 @@ int	ft_atoi(char *str)
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
+		result = (result * 10) + (str[i++] - '0');
+	 if (result > INT_MAX)
 	{
-		if (result > LONG_MAX / 10
-			|| (result == LONG_MAX / 10 && str[i] - '0' != LONG_MAX % 10))
-			return (-1 * (sign == 1));
-		result = (result * 10) + (str[i] - '0');
-		i++;
+		if (sign == 1)
+			return (INT_MAX);
+		else
+			return (INT_MIN);
 	}
-	return (result * sign);
+	return ((int)(result * sign));
 }
 
 char	*t_strjoin(char *s1, char *s2)

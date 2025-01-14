@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_floor_color_utils.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: krazikho <krazikho@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thelmy <thelmy@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 22:41:49 by thelmy            #+#    #+#             */
-/*   Updated: 2025/01/14 17:58:28 by krazikho         ###   ########.fr       */
+/*   Updated: 2025/01/14 18:06:25 by thelmy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	parse_single_value(char *line, int *i, t_game *game)
 		(*i)++;
 	if (!ft_isdigit(line[*i]))
 		game->free_flag = 1;
-	value = atoi(&line[*i]);
+	value = ft_atoi(&line[*i]);
 	if (value < 0 || value > 255)
 		game->free_flag = 1;
 	while (ft_isdigit(line[*i]))
